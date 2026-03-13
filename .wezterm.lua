@@ -141,18 +141,19 @@ https://github.com/mbadolato/iTerm2-Color-Schemes#screenshots
 config.colors = {
 	-- background = '#7d32b0',
 	-- background = "#181616", -- vague.nvim bg
-	-- background = "#080808", -- almost black
+	-- background = "#080808", -- black edit
 	background = "#2b0e47", -- dark purple
 	-- background = "#020202", -- dark purple
 	-- background = "#17151c", -- brighter purple
 	-- background = "#16141a",
 	-- background = "#0e0e12", -- bright washed lavendar
-	-- background = 'rgba(59, 34, 76, 100%)',
+	-- background = 'rgba(59, 34, 76, 100%)', macro 100%
 	cursor_border = "#9451aa",
 	-- cursor_fg = "#281733",
 	cursor_bg = "#7f3f94",
 	-- selection_fg = '#281733',
 
+	--Tag bar seleção:
 	tab_bar = {
 		background = "#241d39",
 		-- background = "rgba(0, 0, 0, 0%)",
@@ -184,7 +185,7 @@ config.colors = {
 
 
 
-
+-- Integração PowerShell para API
 -- config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
 config.window_decorations = "NONE | RESIZE"
 config.default_prog = { "powershell.exe", "-NoLogo" }
@@ -196,7 +197,7 @@ config.initial_cols = 80
 
 -- wezterm.on("gui-startup", function(cmd)
 -- 	local args = {}
--- 	if cmd then
+-- 	if cmd se faz(when):
 -- 		args = cmd.args
 -- 	end
 --
@@ -205,5 +206,5 @@ config.initial_cols = 80
 -- 	-- window:gui_window():set_position(0, 0)
 -- end)
 
--- and finally, return the configuration to wezterm
+-- adição de arquivos Vimdiff, Vim92, Neovim, GlazeWM e Yazi futuramente..
 return config
