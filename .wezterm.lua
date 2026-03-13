@@ -136,7 +136,7 @@ config.keys = {
 config.color_scheme = "Tokyo Night"
 -- Tokyo Night é minha paleta pessoal
 https://github.com/mbadolato/iTerm2-Color-Schemes#screenshots
-![Screenshot](/screenshots/tokyonight.png)
+![Tema Tokyo Night](tokyo-night_theme.PNG)
 
 config.colors = {
 	-- background = '#7d32b0',
