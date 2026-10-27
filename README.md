@@ -35,6 +35,12 @@ Se você também quer deixar o terminal do Windows com cara de Linux, pode usar 
 - **`:Novo` no Neovim.** Eu digito `:Novo c/ola main.c` e ele cria a pasta, abre o arquivo e já coloca um modelo com `main()`. Também funciona com `Espaço n n`, que pergunta a pasta e o arquivo.
 - **`F5`.** Compila e roda o arquivo atual num painel embaixo, em C ou em Python.
 - **Painéis.** Um atalho (`Alt+e`) monta o layout de programação com o Neovim já aberto, sem eu precisar dividir a tela na mão.
+- **Paleta.** Utilizo bastante a paleta TokyoNight theme:
+
+<p align="start">
+  <img src="tokyo_night_theme.png" alt="Tema Tokyo Night" width="900">
+</p>
+
 
 ## Como instalar
 
