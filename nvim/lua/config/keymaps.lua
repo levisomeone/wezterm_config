@@ -1,7 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-
--- F5: compila e roda o arquivo atual (C com gcc/clang, Python com python)
 vim.keymap.set("n", "<F5>", function()
   vim.cmd("w")
   local ft = vim.bo.filetype
