@@ -1,7 +1,7 @@
 <h1 align="center">λ meu terminal no Windows</h1>
 
 <p align="center">
-  Visual de Linux, Neovim para programar em C e Python, tudo no Windows, sem WSL e sem dor de cabeça.
+  Visual de Linux, Neovim para programar em C e Python, tudo no Windows, sem WSL.
 </p>
 
 <p align="center">
