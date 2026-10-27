@@ -1,100 +1,120 @@
-# Meu terminal no Windows
+<h1 align="center">λ meu terminal no Windows</h1>
 
-Configuração do meu ambiente de programação em **C** e **Python** no Windows: terminal com estética de Linux (Tokyo Night), painéis divididos, tela de boas-vindas estilo neofetch e Neovim configurado para trabalhar direto do terminal.
+<p align="center">
+  Visual de Linux, Neovim para programar em C e Python, tudo no Windows, sem WSL e sem dor de cabeça.
+</p>
 
-![preview](assets/preview.png)
+<p align="center">
+  <img src="assets/preview.png" alt="Meu terminal: WezTerm com a tela de boas-vindas em Tokyo Night" width="900">
+</p>
+
+---
+
+## Por que isso existe
+
+Eu gosto muito do jeito que o terminal de quem usa Linux fica: prompt limpo, cores boas, um neofetch na abertura e um editor que faz tudo sem sair do teclado. Só que eu uso Windows, e não queria instalar um Linux inteiro só por estética.
+
+Então montei esse setup: **WezTerm + PowerShell + Starship + fastfetch + Neovim (LazyVim)**, com a paleta **Tokyo Night** em tudo, para parecer uma coisa só. Eu programo em **C** e **Python**, então o Neovim já vem pronto para isso, com autocomplete, erros em tempo real, formatação ao salvar e um atalho para compilar e rodar.
+
+Se você também quer deixar o terminal do Windows com cara de Linux, pode usar do jeito que está ou pegar só as partes que gostar.
 
 ## O que tem aqui
 
-| Pasta | Conteúdo |
+| Pasta | Para que serve |
 |---|---|
-| `wezterm/` | Configuração do WezTerm: tema Tokyo Night, barra de abas estilo powerline, painéis e atalhos |
-| `powershell/` | Perfil do PowerShell: prompt, ícones, sugestões, aliases e o comando `ff` |
-| `starship/` | Prompt em duas linhas com `λ`, git e versão da linguagem |
-| `fastfetch/` | Tela de informações do sistema ao lado de uma imagem, com status do WampServer e do meu site |
-| `nvim/` | Neovim (LazyVim): LSP para C e Python, formatação ao salvar, tela inicial própria e o comando `:Novo` |
-| `assets/` | Imagem usada no fastfetch e prints |
+| `wezterm/` | O terminal em si: tema, abas estilo powerline com relógio e bateria, painéis divididos e atalhos |
+| `powershell/` | O perfil do PowerShell: ícones, sugestões, aliases e a tela de boas-vindas |
+| `starship/` | O prompt de duas linhas com o `λ`, o git e a versão da linguagem |
+| `fastfetch/` | As informações do PC, agrupadas por cor, e o status do WampServer e do meu site |
+| `nvim/` | O Neovim com LSP, formatação, tela inicial própria e o comando `:Novo` |
+| `assets/` | A imagem da abertura e o print do README |
 
-## Recursos
+## O que eu mais gosto nele
 
-- **WezTerm** com Tokyo Night, fonte JetBrains Mono, abas no topo com relógio e bateria, e painéis divididos
-- **Neofetch próprio**: informações agrupadas por cor, imagem ao lado e indicadores `●` verde/branco para o WampServer e para o site na Vercel
-- **Neovim para C e Python**: autocomplete, erros em tempo real, formatação automática (`clang-format` e `ruff`), árvore de arquivos e depurador
-- **Criação rápida de projetos** dentro do nvim com `:Novo pasta arquivo`, que cria a pasta, abre o arquivo e já coloca um modelo básico
-- **`F5`** compila e roda o arquivo atual em um painel embaixo (C com `gcc`, Python com `python`)
+- **A abertura.** Toda vez que abro o terminal aparece a imagem com as informações do PC do lado. Dois indicadores mostram se o **WampServer** está ligado e se o meu **site na Vercel** está no ar (bolinha verde = online, branca = offline).
+- **`:Novo` no Neovim.** Eu digito `:Novo c/ola main.c` e ele cria a pasta, abre o arquivo e já coloca um modelo com `main()`. Também funciona com `Espaço n n`, que pergunta a pasta e o arquivo.
+- **`F5`.** Compila e roda o arquivo atual num painel embaixo, em C ou em Python.
+- **Painéis.** Um atalho (`Alt+e`) monta o layout de programação com o Neovim já aberto, sem eu precisar dividir a tela na mão.
 
-## Requisitos
+## Como instalar
+
+Preciso avisar: foi feito no **Windows 10/11 com PowerShell 7**. Em outros sistemas, talvez precise adaptar.
+
+**1. Instale os programas** (uma vez só, no PowerShell):
 
 ```powershell
 winget install wez.wezterm Microsoft.PowerShell Neovim.Neovim Git.Git Starship.Starship Fastfetch-cli.Fastfetch BurntSushi.ripgrep.MSVC Python.Python.3.12 OpenJS.NodeJS.LTS MSYS2.MSYS2
 ```
 
-O compilador `gcc` vem do MSYS2 (toolchain `mingw-w64-x86_64-toolchain`) e precisa estar no `PATH`. O Node.js é usado pelo Mason para instalar alguns servidores de linguagem.
+O compilador `gcc` vem do MSYS2 (pacote `mingw-w64-x86_64-toolchain`) e precisa estar no `PATH`. O Node é usado pelo Mason para instalar alguns servidores de linguagem.
 
-## Instalação
+**2. Base do Neovim**, se você ainda não tem o LazyVim:
 
 ```powershell
-# 1. Base do Neovim (LazyVim), só se ainda não tiver
 git clone https://github.com/LazyVim/starter $env:LOCALAPPDATA\nvim
 Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
-
-# 2. Este repositório
-git clone https://github.com/SEU_USUARIO/NOME_DO_REPO.git
-cd NOME_DO_REPO
-.\install.ps1
-
-# 3. Módulos do PowerShell
-Install-Module Terminal-Icons -Scope CurrentUser -Force
 ```
 
-O script copia cada arquivo para o lugar certo e guarda uma cópia das configurações antigas em `~\.config-backup-<data>`. Se o PowerShell bloquear a execução, rode antes:
+**3. Clone este repositório e rode o instalador:**
 
 ```powershell
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+git clone https://github.com/SEU_USUARIO/NOME_DO_REPO.git
+cd NOME_DO_REPO
+Install-Module Terminal-Icons -Scope CurrentUser -Force
+.\install.ps1
 ```
 
-Depois feche e abra o WezTerm. Na primeira abertura do `nvim`, os plugins são baixados sozinhos. Espere terminar, feche e abra de novo.
+O script copia cada arquivo para o lugar certo e **guarda uma cópia do que você já tinha** em `~\.config-backup-<data>`, então dá para voltar atrás. Se o PowerShell bloquear a execução, rode antes `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
 
-## Atalhos do WezTerm
+Depois, feche e abra o WezTerm. Na primeira vez que abrir o `nvim`, ele baixa os plugins sozinho: espere terminar, feche e abra de novo.
 
-| Atalho | Ação |
+## Atalhos que eu mais uso
+
+**WezTerm**
+
+| Atalho | O que faz |
 |---|---|
-| `Alt+d` / `Alt+s` | Dividir ao lado / embaixo |
-| `Alt+setas` | Mudar de painel |
-| `Alt+r` + setas | Redimensionar painel (`Esc` sai) |
+| `Alt+d` / `Alt+s` | Divide a tela ao lado / embaixo |
+| `Alt+setas` | Muda de painel |
+| `Alt+r` + setas | Redimensiona o painel (`Esc` sai) |
 | `Alt+z` | Zoom no painel |
-| `Alt+w` | Fechar painel |
 | `Alt+t` | Nova aba |
 | `Alt+n` / `Alt+p` | Próxima / anterior aba |
-| `Alt+1` a `Alt+9` | Ir direto para a aba |
-| `Alt+e` | Layout de programação com o nvim aberto |
+| `Alt+e` | Layout de programação com o nvim |
 
-## Neovim
+**Neovim**
 
-| Atalho / comando | Ação |
+| Atalho | O que faz |
 |---|---|
-| `:Novo c/ola main.c` | Cria `~\projetos\c\ola\main.c` com modelo e abre |
-| `Espaço n n` | O mesmo, perguntando a pasta e o arquivo |
+| `Espaço` | Mostra o menu com todos os atalhos |
 | `Espaço e` | Árvore de arquivos |
-| `Espaço Espaço` | Buscar arquivo |
-| `Espaço /` | Buscar texto no projeto |
+| `Espaço Espaço` | Procurar arquivo |
+| `Espaço /` | Procurar texto no projeto |
 | `Espaço c f` | Formatar (também formata ao salvar) |
-| `gd` / `K` | Ir à definição / ver documentação |
+| `gd` / `K` | Ir à definição / ver a documentação |
 | `F5` | Compilar e rodar |
 
-## Personalização
+## Deixando do seu jeito
 
-- **Cores:** a paleta fica no começo do `wezterm/.wezterm.lua` (tabela `c`) e no `starship/starship.toml`
-- **Informações do neofetch:** edite `fastfetch/config.jsonc`; cada módulo é uma linha
-- **Status de serviços:** o `fastfetch/status.ps1` checa uma porta local ou uma URL. Troque a porta do WampServer e o endereço do site no `config.jsonc`
-- **Imagem:** substitua `assets/image_neofetchlike.png` mantendo o nome, ou ajuste `--width` e `--height` em `ffimg` no perfil do PowerShell
+- **Cores:** a paleta fica no começo do `wezterm/.wezterm.lua` (a tabela `c`) e no `starship/starship.toml`. Trocar um valor muda tudo.
+- **O que aparece na abertura:** cada linha do `fastfetch/config.jsonc` é uma informação. Apague a que não quiser.
+- **Status dos serviços:** o `fastfetch/status.ps1` testa uma porta local ou um endereço. Troque a porta do Wamp e a URL do site no `config.jsonc`.
+- **A imagem:** basta substituir o `assets/image_neofetchlike.png` mantendo o nome. O tamanho está em `ffimg`, no perfil do PowerShell.
 
-## Problemas conhecidos
+## Coisas que você precisa saber
 
-- A imagem do `ff` é desenhada pelo `wezterm imgcat` e some quando a janela é redimensionada ou depois de sair do nvim (limitação do ConPTY do Windows). O perfil recoloca a imagem sozinho ao fechar o nvim, e o comando `ff` redesenha tudo.
-- O `F5` para C usa `gcc`. Sem ele, cai para `clang`, que no Windows precisa das bibliotecas do MSYS2 para achar o `stdio.h`.
+Fui descobrindo na prática e deixo aqui para poupar o seu tempo:
+
+- **A imagem some** quando você redimensiona a janela ou sai do Neovim. É uma limitação do jeito que o Windows conversa com o terminal (ConPTY). O perfil recoloca a imagem sozinho ao fechar o nvim, e o comando `ff` redesenha tudo.
+- **O `F5` em C usa o `gcc`.** Se só existir o `clang`, o Windows não acha o `stdio.h`, por falta das bibliotecas. Por isso uso o MSYS2.
+- **Ícones quebrados?** Eles dependem de uma fonte Nerd Font. O WezTerm já traz uma embutida, mas, se aparecer algum quadradinho, instale a `JetBrainsMono Nerd Font`.
 
 ## Créditos
 
-- Ilustração do fastfetch: *(coloque aqui o crédito do artista e o link da fonte)*
-- [WezTerm](https://wezterm.org), [Neovim](https://neovim.io), [LazyVim](https://www.lazyvim.org), [Starship](https://starship.rs), [fastfetch](https://github.com/fastfetch-cli/fastfetch) e a paleta [Tokyo Night](https://github.com/folke/tokyonight.nvim)
+- Ilustração da abertura: *(coloque aqui o nome do artista e o link de onde pegou)*
+- Ferramentas: [WezTerm](https://wezterm.org), [Neovim](https://neovim.io), [LazyVim](https://www.lazyvim.org), [Starship](https://starship.rs) e [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- Paleta: [Tokyo Night](https://github.com/folke/tokyonight.nvim)
+
+---
+
+<p align="center">Se te ajudou, deixa uma ⭐ no repositório.</p>
