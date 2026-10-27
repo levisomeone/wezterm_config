@@ -1,5 +1,3 @@
--- :Novo <pasta> <arquivo>  -> cria ~/projetos/<pasta>/<arquivo> e abre
--- Espaço n n               -> pergunta a pasta e o arquivo
 local base = vim.fn.expand("~") .. "/projetos"
 
 local templates = {
