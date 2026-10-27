@@ -1,6 +1,3 @@
-# Checa se um serviço está no ar e imprime uma bolinha colorida.
-#   status.ps1 port <porta> <nome>   -> testa uma porta local (ex.: WampServer na 80)
-#   status.ps1 web  <url>   <nome>   -> testa uma URL (ex.: site na Vercel)
 param([string]$check, [string]$arg, [string]$name)
 [Console]::OutputEncoding = [Text.UTF8Encoding]::new()
 $esc = [char]27
