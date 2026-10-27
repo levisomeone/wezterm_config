@@ -115,9 +115,7 @@ Fui descobrindo na prática e deixo aqui para poupar o seu tempo:
 - **O `F5` em C usa o `gcc`.** Se só existir o `clang`, o Windows não acha o `stdio.h`, por falta das bibliotecas. Por isso uso o MSYS2.
 - **Ícones quebrados?** Eles dependem de uma fonte Nerd Font. O WezTerm já traz uma embutida, mas, se aparecer algum quadradinho, instale a `JetBrainsMono Nerd Font`.
 
-## Créditos
 
-- Ilustração da abertura: *(coloque aqui o nome do artista e o link de onde pegou)*
 - Ferramentas: [WezTerm](https://wezterm.org), [Neovim](https://neovim.io), [LazyVim](https://www.lazyvim.org), [Starship](https://starship.rs) e [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Paleta: [Tokyo Night](https://github.com/folke/tokyonight.nvim)
 
